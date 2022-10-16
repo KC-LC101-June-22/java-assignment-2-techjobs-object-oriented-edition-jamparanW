@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import javax.security.auth.callback.LanguageCallback;
 import java.util.Objects;
 
 public class Job {
@@ -28,6 +29,29 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+    }
+    @Override
+    public String toString() {
+        // Declares placeholders
+        String namePlaceholder = getName();
+        String employerPlaceholder = getEmployer().toString();
+        String locationPlaceholder = getLocation().toString();
+        String positionTypePlaceholder = getPositionType().toString();
+        String coreCompetencyPlaceholder = getCoreCompetency().toString();
+
+        // Changes placeholder value to N/A message if it's empty
+        if (Objects.equals(getName(), "")) {namePlaceholder = "Data not available";}
+        if (Objects.equals(employerPlaceholder, "")) {employerPlaceholder = "Data not available";}
+        if (Objects.equals(locationPlaceholder, "")) {locationPlaceholder = "Data not available";}
+        if (Objects.equals(positionTypePlaceholder, "")) {positionTypePlaceholder = "Data not available";}
+        if (Objects.equals(coreCompetencyPlaceholder, "")) {coreCompetencyPlaceholder = "Data not available";}
+
+        return "\nID: " + getId() + "\n" +
+                "Name: " + namePlaceholder + "\n" +
+                "Employer: " + employerPlaceholder + "\n" +
+                "Location: " + locationPlaceholder + "\n" +
+                "Position Type: " + positionTypePlaceholder + "\n" +
+                "Core Competency: " + coreCompetencyPlaceholder + "\n";
     }
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
@@ -64,9 +88,7 @@ public class Job {
         this.employer = employer;
     }
 
-    public Location getLocation() {
-        return location;
-    }
+    public Location getLocation() { return location; }
 
     public void setLocation(Location location) {
         this.location = location;
