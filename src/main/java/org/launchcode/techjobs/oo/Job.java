@@ -1,6 +1,8 @@
 package org.launchcode.techjobs.oo;
 
 import javax.security.auth.callback.LanguageCallback;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class Job {
