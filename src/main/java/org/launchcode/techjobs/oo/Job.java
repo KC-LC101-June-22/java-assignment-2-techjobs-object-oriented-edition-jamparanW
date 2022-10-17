@@ -38,14 +38,21 @@ public class Job {
         String locationPlaceholder = getLocation().toString();
         String positionTypePlaceholder = getPositionType().toString();
         String coreCompetencyPlaceholder = getCoreCompetency().toString();
+        String N_A = "Data not available";
 
         // Changes placeholder value to N/A message if it's empty
-        if (Objects.equals(getName(), "")) {namePlaceholder = "Data not available";}
-        if (Objects.equals(employerPlaceholder, "")) {employerPlaceholder = "Data not available";}
-        if (Objects.equals(locationPlaceholder, "")) {locationPlaceholder = "Data not available";}
-        if (Objects.equals(positionTypePlaceholder, "")) {positionTypePlaceholder = "Data not available";}
-        if (Objects.equals(coreCompetencyPlaceholder, "")) {coreCompetencyPlaceholder = "Data not available";}
+        if (namePlaceholder.equals("")) {namePlaceholder = N_A;}
+        if (employerPlaceholder.equals("")) {employerPlaceholder = N_A;}
+        if (locationPlaceholder.equals("")) {locationPlaceholder = N_A;}
+        if (positionTypePlaceholder.equals("")) {positionTypePlaceholder = N_A;}
+        if (coreCompetencyPlaceholder.equals("")) {coreCompetencyPlaceholder = N_A;}
 
+        // Returns non-existent job message if only ID is retrievable
+        if (namePlaceholder.equals(N_A) && employerPlaceholder.equals(N_A) && locationPlaceholder.equals(N_A) && positionTypePlaceholder.equals(N_A) && coreCompetencyPlaceholder.equals(N_A)) {
+            return "OOPS! This job does not seem to exist.";
+        }
+
+        // Returns filled out formatted fields with available data
         return "\nID: " + getId() + "\n" +
                 "Name: " + namePlaceholder + "\n" +
                 "Employer: " + employerPlaceholder + "\n" +
